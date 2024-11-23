@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :players
+  resources :rounds
+  devise_for :players, controllers: {
+    registrations: 'players/registrations',
+    sessions: 'players/sessions',
+    passwords: 'players/passwords'
+   }
+   
   resources :players
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
