@@ -21,7 +21,7 @@ class PlayersController < ApplicationController
 
   # POST /players or /players.json
   def create
-    @player = Player.new(player_params)
+    @player = Player.new(params)
 
     respond_to do |format|
       if @player.save
