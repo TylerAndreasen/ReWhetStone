@@ -4,6 +4,10 @@ class Player < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         has_many :round, dependent: :destroy
+
+         accepts_nested_attributes_for :round
+
          validates :username, uniqueness: true
          # All other fields are handled by devise or are not required
          # NOTE:: This may need to look more like examples, as I may need to

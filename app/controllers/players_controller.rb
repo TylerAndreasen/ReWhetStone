@@ -8,6 +8,7 @@ class PlayersController < ApplicationController
 
   # GET /players/1 or /players/1.json
   def show
+    @player_rounds = @player.round
   end
 
   # GET /players/new
@@ -65,6 +66,7 @@ class PlayersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def player_params
-      params.require(:player).permit(:username, :display_name, :use_display_name)
+      params.require(:player).permit(:username, :display_name, :use_display_name,
+      round_attributes: [:player_id, :score_1, :score_2, :score_3, :score_4, :called_clutch, :score_5])
     end
 end
