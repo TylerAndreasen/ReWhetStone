@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_23_205346) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_26_040405) do
   create_table "players", force: :cascade do |t|
     t.string "username"
     t.string "display_name"
@@ -32,10 +32,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_23_205346) do
     t.string "score_2"
     t.string "score_3"
     t.string "score_4"
-    t.boolean "called_clutch"
+    t.string "called_clutch"
     t.string "score_5"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_rounds_on_player_id"
   end
 
+  add_foreign_key "rounds", "players"
 end

@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe "rounds/new", type: :view do
   before(:each) do
     assign(:round, Round.new(
-      player_id: 1,
+      player: nil,
       score_1: "MyString",
       score_2: "MyString",
       score_3: "MyString",
       score_4: "MyString",
-      called_clutch: false,
+      called_clutch: "MyString",
       score_5: "MyString"
     ))
   end

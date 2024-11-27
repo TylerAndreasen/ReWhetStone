@@ -1,51 +1,14 @@
 <div id="<%= dom_id player %>">
+  <% if player.use_display_name %>
   <p>
-    <strong>Username:</strong>
-    <%= player.username %>
+      <strong>Display name:</strong>
+      <%= player.display_name %>
   </p>
 
-  <p>
-    <strong>Display name:</strong>
-    <%= player.display_name %>
-  </p>
-
-  <p>
-    <strong>Use display name:</strong>
-    <%= player.use_display_name %>
-  </p>
-
-  TODO Move landing page to sign_in, this will resolve the "No rounds for you" on the list of players, which users shouldn't see anyways.
-  <%= link_to 'Start Practicing', new_round_path %>
-
-  <% if @player_rounds != nil%>
-    <% if @player_rounds.any? %>
-    
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Score 1</th>
-            <th>Score 2</th>
-            <th>Score 3</th>
-            <th>Score 4</th>
-            <th>Called?</th>
-            <th>Score 5</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @player_rounds.each do |round| %>
-            <tr>
-              <td><%= round.score_1 %></td>
-              <td><%= round.score_2 %></td>
-              <td><%= round.score_3 %></td>
-              <td><%= round.score_4 %></td>
-              <td><%= round.called_clutch %></td>
-              <td><%= round.score_5 %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
   <% else %>
-    <p>No rounds found for you yet. [NYI] Start a new round!.</p>
+  <p>
+      <strong>Username:</strong>
+      <%= player.username %>
+  </p>
   <% end %>
 </div>

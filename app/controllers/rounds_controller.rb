@@ -1,4 +1,5 @@
 class RoundsController < ApplicationController
+  before_action :set_player # Added at the advise of ChatGPT 4o mini
   before_action :set_round, only: %i[ show edit update destroy ]
 
   # GET /rounds or /rounds.json
@@ -12,7 +13,7 @@ class RoundsController < ApplicationController
 
   # GET /rounds/new
   def new
-    @round = Round.new
+    @round = @player.round.build # Modified at the advise of ChatGPT 4o mini
   end
 
   # GET /rounds/1/edit
@@ -21,11 +22,11 @@ class RoundsController < ApplicationController
 
   # POST /rounds or /rounds.json
   def create
-    @round = Round.new(round_params)
+    @round = @player.round.build(round_params) # Modified at the advise of ChatGPT 4o mini 
 
     respond_to do |format|
       if @round.save
-        format.html { redirect_to @player, notice: "Round was successfully created." }
+        format.html { redirect_to @player, notice: "Your round was successfully submitted. Keep up the good work!" }
         format.json { render :show, status: :created, location: @player }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,8 +39,8 @@ class RoundsController < ApplicationController
   def update
     respond_to do |format|
       if @round.update(round_params)
-        format.html { redirect_to @round, notice: "Round was successfully updated." }
-        format.json { render :show, status: :ok, location: @round }
+        format.html { redirect_to @player, notice: "You round was successfully updated." }
+        format.json { render :show, status: :ok, location: @player }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @round.errors, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class RoundsController < ApplicationController
     @round.destroy!
 
     respond_to do |format|
-      format.html { redirect_to rounds_path, status: :see_other, notice: "Round was successfully destroyed." }
+      format.html { redirect_to @player, status: :see_other, notice: "Your round was successfully deleted." }
       format.json { head :no_content }
     end
   end
@@ -61,6 +62,10 @@ class RoundsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_round
       @round = Round.find(params[:id])
+    end
+
+    def set_player # Added at the advise of ChatGPT 4o mini
+      @player = Player.find(params[:player_id])
     end
 
     # Only allow a list of trusted parameters through.

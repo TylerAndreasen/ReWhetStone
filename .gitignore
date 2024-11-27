@@ -7,6 +7,9 @@
 # Ignore developer temp files
 *.cana
 
+# Ignore local TODO Manager Files
+/.vscode 
+
 # Ignore bundler config.
 /.bundle
 
