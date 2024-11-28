@@ -3,8 +3,7 @@
 [Planning Board](https://github.com/users/TylerAndreasen/projects/3)
 
 
-
-Things you may want to cover:
+Important Infos::
 
 * This Web App should not be deployed, as it is an educational tool.
 

@@ -23,5 +23,11 @@ module Whetstone
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+
+    # The below line seems to have been quite important, as it enables assets.
+    # I tried a few different things, but this was apparently the only 
+    # necessary step that was not included in the professors instructions.
+    config.assets.enabled = true
   end
 end
