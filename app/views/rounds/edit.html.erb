@@ -5,6 +5,9 @@
 <br>
 
 <div>
-  <%= link_to "Show this round", @round %> |
-  <%= link_to "Back to rounds", rounds_path %>
+  <%#
+    There was another link here that tried to link back to an individual view for the round,
+    this does not mean much and should not be shown to the user.
+  %>
+  <%= link_to "Back to your player page", player_path( @player.id ) %>
 </div>

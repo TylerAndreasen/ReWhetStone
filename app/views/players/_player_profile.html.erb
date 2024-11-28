@@ -2,7 +2,7 @@
   
  <%= render player %>
 
- <%= link_to "Start Practicing", new_player_round_path( :player_id => @player.id ) %>
+ <%= button_to "Start Practicing", new_player_round_path( :player_id => @player.id ) %>
 
   <% if @player_rounds != nil%>
     <% if @player_rounds.any? %>
@@ -15,6 +15,8 @@
             <th>Score 4</th>
             <th>Called?</th>
             <th>Score 5</th>
+            <th>Change</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -26,6 +28,8 @@
               <td><%= round.score_4 %></td>
               <td><%= round.called_clutch %></td>
               <td><%= round.score_5 %></td>
+              <td><%= button_to "Edit", edit_player_round_path( :player_id => @player.id, :id => round.id )%></td>
+              <td><%= button_to "Delete", player_round_path( :player_id => @player.id, :id => round.id ), method: :delete %></td>
             </tr>
           <% end %>
         </tbody>

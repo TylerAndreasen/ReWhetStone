@@ -1,5 +1,5 @@
 class RoundsController < ApplicationController
-  before_action :set_player # Added at the advise of ChatGPT 4o mini
+  before_action :set_player, only: %i[ show edit update destroy ] # Added at the advise of ChatGPT 4o mini
   before_action :set_round, only: %i[ show edit update destroy ]
 
   # GET /rounds or /rounds.json
