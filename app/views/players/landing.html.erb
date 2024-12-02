@@ -1,0 +1,16 @@
+<%#
+    This file is intended to be the actual landing page of the site as a whole.
+    I do not think it appropriate to allow other players or anyone who stumbles
+    along the site to see a list of all players, even just usernames. Though
+    this may be my digital paranoia talking. 
+    That said, upon trying to implement this, I broke several things that were
+    previously working, so I am placing this at the back of the list from a
+    development priority perspective. 
+ %>
+
+<div>
+    HALLO<br/><br/>
+    <%= link_to "Sign In", new_player_session_path %><br/><br/>
+
+    <%= link_to "Sign Up", new_player_registration_path %><br/><br/>
+</div>

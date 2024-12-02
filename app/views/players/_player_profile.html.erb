@@ -35,7 +35,12 @@
         </tbody>
       </table>
     <% else %>
-      <p>No rounds found for you yet. Start one with the button above!.</p>
+      <p>No rounds found for you yet. Start one with the button above!</p>
     <% end %>
   <% end %>
+  <%= button_to(
+        "Log Out",
+        destroy_player_session_path,
+        method: :delete
+      ) %>
 </div>
