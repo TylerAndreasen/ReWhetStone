@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :rounds
   devise_for :players, controllers: {
     registrations: 'players/registrations',
     sessions: 'players/sessions',
@@ -7,7 +6,7 @@ Rails.application.routes.draw do
    }
    
   resources :players do
-    resources :rounds
+    resources :rounds, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

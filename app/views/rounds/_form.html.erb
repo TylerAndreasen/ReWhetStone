@@ -1,4 +1,8 @@
-<%= form_with(model: round) do |form| %>
+<%# The below line was modified at the advise of ChatGPT 4o mini
+ The actual issue was having a space between `form_with` and the open parenthesis
+ Gotta love whitespace sensitive languages.
+ There do not seem to be any knock-on effects at this time though I will try to note them here in the future later. %>
+<%= form_with(model: [@player, @round]) do |form| %> 
   <% if round.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(round.errors.count, "error") %> prohibited this round from being saved:</h2>
@@ -11,14 +15,7 @@
     </div>
   <% end %>
 
-  <p>TODO:: Implement automatic assignment of user ID to round submission
-  </p><p>TODO:: Investigate implementing session data/cookies that will retain any entered scores in the case of incorrect submission. 
-  </p><p>TODO:: Iteration 2, Implement P5.js graphical inputs for target, called clutch decision, and final throw input.
-  </p><p>TODO:: Modify existing routes to directly associate rounds with players ("players/#/rounds/new") This should resolve the nil player route issue. 
-  <div>
-    <%= form.label :player_id, style: "display: block" %>
-    <%= form.number_field :player_id %>
-  </div>
+  <p>TODO:: Iteration 2, Implement P5.js graphical inputs for target, called clutch decision, and final throw input.
 
   <div>
     <%= form.label :score_1, style: "display: block" %>
@@ -42,7 +39,6 @@
 
 
   <div>
-  TODO:: Modify the backend of this form field (may database migrations) to allow users to specify calling or not calling clutch.
     <%= form.label :called_clutch, style: "display: block" %>
     <%= form.select :called_clutch, options_for_select(Round::BOOLEAN_STRINGS), { prompt: "Call it?" }, class: "form-control" %>
   </div>

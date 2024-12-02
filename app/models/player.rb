@@ -1,16 +1,15 @@
 class Player < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-         has_many :round, dependent: :destroy
+  has_many :round, dependent: :destroy
 
-         accepts_nested_attributes_for :round
+  accepts_nested_attributes_for :round
 
-         validates :username, uniqueness: true
-         # All other fields are handled by devise or are not required
-         # NOTE:: This may need to look more like examples, as I may need to
-         # allow Round and or Mentorship data through as well. 
+  validates :username, uniqueness: true
+  # All other fields are handled by devise or are not required
+  # NOTE:: This may need to look more like examples, as I may need to
+  # allow Round and or Mentorship data through as well. 
 end
 # temporary

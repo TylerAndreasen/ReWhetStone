@@ -1,0 +1,46 @@
+<div id="<%= dom_id player %>">
+  
+ <%= render player %>
+
+ <%= button_to "Start Practicing", new_player_round_path( :player_id => @player.id ) %>
+
+  <% if @player_rounds != nil%>
+    <% if @player_rounds.any? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Score 1</th>
+            <th>Score 2</th>
+            <th>Score 3</th>
+            <th>Score 4</th>
+            <th>Called?</th>
+            <th>Score 5</th>
+            <th>Change</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @player_rounds.each do |round| %>
+            <tr>
+              <td><%= round.score_1 %></td>
+              <td><%= round.score_2 %></td>
+              <td><%= round.score_3 %></td>
+              <td><%= round.score_4 %></td>
+              <td><%= round.called_clutch %></td>
+              <td><%= round.score_5 %></td>
+              <td><%= button_to "Edit", edit_player_round_path( :player_id => @player.id, :id => round.id )%></td>
+              <td><%= button_to "Delete", player_round_path( :player_id => @player.id, :id => round.id ), method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No rounds found for you yet. Start one with the button above!</p>
+    <% end %>
+  <% end %>
+  <%= button_to(
+        "Log Out",
+        destroy_player_session_path,
+        method: :delete
+      ) %>
+</div>

@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @player %>
+<%= render :partial => "player_profile", :locals => { :player => @player } %>
 
 <div>
   <%= link_to "Edit this player", edit_player_path(@player) %> |
