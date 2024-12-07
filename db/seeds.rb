@@ -15,24 +15,34 @@ require 'faker' # Make sure the Faker gem is installed
 Round.destroy_all
 Player.destroy_all
 
-player = Player.create!(
-    username: "CANA"
-    display_name: "temp"
-    use_display_name: "true"
-    email: "student#{i + 1}@msudenver.edu",
-    password: "password",  # Set a default password
-    password_confirmation: "password"
-)
+50.times do |i|
+    fname = Faker::Name.first_name
+    lname = Faker::Name.last_name
+    @player = Player.create!(
+        username: fname + " " + lname,
+        display_name: Faker::Verb.ing_form,
+        use_display_name: Faker::Boolean.boolean,
+        password: "password",
+        email: fname.downcase + lname.downcase + "@gmail.com"
+    )
 
-    # Create a portfolio for the student
-Round.create!(
-    player: player,
-    score_1: "5"
-    score_2: "5"
-    score_3: "5"
-    score_4: "5"
-    called_clutch: "true"
-    score_5: "7"
-  )
-
-puts "Created Fake Cana with Round?"
+    5.times do |j|
+        temp = Round::BOOLEAN_STRINGS.sample
+        final = ""
+        if (temp == Round::BOOLEAN_STRINGS[0])
+            final = Round::VALID_NORMAL_THROWS.sample
+        else
+            final = Round::VALID_CLUTCH_THROWS.sample
+        end
+        round = Round.create!(
+            player_id: @player.id,
+            score_1: Round::VALID_NORMAL_THROWS.sample,
+            score_2: Round::VALID_NORMAL_THROWS.sample,
+            score_3: Round::VALID_NORMAL_THROWS.sample,
+            score_4: Round::VALID_NORMAL_THROWS.sample,
+            called_clutch: temp,
+            score_5: final
+        )
+    end
+end
+puts "Created 50 Fake Players with 5 rounds each"

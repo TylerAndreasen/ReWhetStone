@@ -7,9 +7,10 @@ class Player < ApplicationRecord
 
   accepts_nested_attributes_for :round
 
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, allow_blank: false, allow_nil: false
+
   # All other fields are handled by devise or are not required
-  # NOTE:: This may need to look more like examples, as I may need to
-  # allow Round and or Mentorship data through as well. 
+  # NOTE:: This may need to allow data about a Mentorship, if I ever implement
+  # such. 
 end
 # temporary

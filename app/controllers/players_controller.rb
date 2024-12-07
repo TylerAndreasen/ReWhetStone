@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+  # The below line was taken from ChatGPT 40 mini, applied also to round_controller.rb
+  before_action :authenticate_player!  # Ensure player is logged in
   before_action :set_player, only: %i[ show edit update destroy ]
 
   # GET /players or /players.json

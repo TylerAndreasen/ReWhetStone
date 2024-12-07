@@ -1,7 +1,13 @@
 class RoundsController < ApplicationController
-  before_action :set_player, only: %i[ show edit update destroy ] # Added at the advise of ChatGPT 4o mini
-  before_action :set_round, only: %i[ show edit update destroy ]
-
+  
+  
+  #before_action :set_player, only: %i[ show create edit update destroy ] # Added at the advice of ChatGPT 4o mini
+  
+  # NOTE:: The below `before_action` lines replace the above at the later advice of ChatGPT 4o mini
+  before_action :authenticate_player!  # Ensure player is logged in
+  before_action :set_player  # Set the player before actions
+  before_action :set_round, only: %i[ show edit update destroy ] # Edited at the advice of ChatGPT 4o mini
+    #Should :Create be in this list? No, as GET and POST for new rounds should not specify an existing round
   # GET /rounds or /rounds.json
   def index
     @rounds = Round.all
@@ -13,6 +19,10 @@ class RoundsController < ApplicationController
 
   # GET /rounds/new
   def new
+    # The first line was added after reading the first answer of the following link,
+    # I thought I was able to use this code previously, though I may be incorrect in this.
+    # https://stackoverflow.com/questions/2034700/form-for-with-nested-resources
+    @player = Player.find(params[:player_id])
     @round = @player.round.build # Modified at the advise of ChatGPT 4o mini
   end
 
@@ -61,7 +71,7 @@ class RoundsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_round
-      @round = Round.find(params[:id])
+      @round = @player.round.find(params[:id])
     end
 
     def set_player # Added at the advise of ChatGPT 4o mini

@@ -13,11 +13,12 @@ Important Infos::
 
 * System dependencies: Docker Desktop,
 
-* How to run the test suite: NYI
+* How to run the test suite:
+    Model:: Via the workspace command line run: `rspec spec/models/players_spec.rb` 
 
 * Database creation: Run `rails db:migrate` from a command line attached to the docker container. This should create all necessary database files. 
 
-* Database initialization: [NYI] If ever implemented, test data will be created with the Ruby gem, Faker. Eventually, the command would be `rails db:seed`.
+* Database initialization: Test data can be created with the Ruby gem, Faker. Run the command: `rails db:seed`, to generate this data locally.
 
 TODO::
 

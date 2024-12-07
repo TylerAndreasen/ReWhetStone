@@ -1,7 +1,10 @@
+
+
+<h3> TODO :: Visual Contrast and shrink to fit on selections </h3>
 <%# The below line was modified at the advise of ChatGPT 4o mini
- The actual issue was having a space between `form_with` and the open parenthesis
- Gotta love whitespace sensitive languages.
- There do not seem to be any knock-on effects at this time though I will try to note them here in the future later. %>
+The actual issue was having a space between `form_with` and the open parenthesis
+Gotta love whitespace sensitive languages.
+There do not seem to be any knock-on effects at this time though I will try to note them here in the future later. %>
 <%= form_with(model: [@player, @round]) do |form| %> 
   <% if round.errors.any? %>
     <div style="color: red">
@@ -15,7 +18,7 @@
     </div>
   <% end %>
 
-  <p>TODO:: Iteration 2, Implement P5.js graphical inputs for target, called clutch decision, and final throw input.
+  <h3>TODO:: Iteration 2, Implement P5.js graphical inputs for target, called clutch decision, and final throw input.</h3>
 
   <div>
     <%= form.label :score_1, style: "display: block" %>
